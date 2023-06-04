@@ -6,14 +6,20 @@ import IComment from "../../types/comment.interface";
 const baseUrl = "posts";
 
 export const postService = {
-  getAllPosts: async (): Promise<AxiosResponse<IPost>> => {
-    return await $api.get(`${baseUrl}`);
+  getPosts: async (
+    userId?: number,
+    page = 1,
+    title = ""
+  ): Promise<AxiosResponse<IPost>> => {
+    const id = userId ? `/?userId=${userId}` : "";
+    const res = await $api.get<IPost>(
+      `${baseUrl}/${id}?_limit=10&_page=${page}&title_like=${title}`
+    );
+    return res;
   },
-  getUserPosts: async (userId: number): Promise<AxiosResponse<IPost>> => {
-    return await $api.get<IPost>(`${baseUrl}/?userId=${userId}`);
-  },
-
-  getPostComments: async (postId: number): Promise<AxiosResponse<IComment>> => {
-    return await $api.get<IComment>(`${baseUrl}/${postId}/comments`);
+  getPostComments: async (
+    postId: number
+  ): Promise<AxiosResponse<IComment[]>> => {
+    return await $api.get<IComment[]>(`${baseUrl}/${postId}/comments`);
   },
 };
