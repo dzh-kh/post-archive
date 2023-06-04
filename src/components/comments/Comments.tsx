@@ -1,23 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import CommentItem from "./CommentItem";
-import IComment from "../../types/comment.interface";
-import { postService } from "../../api/services/post.service";
 import Loader from "../loader/Loader";
-
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { fetchComments } from "../../store/comment/actions";
+import { useDispatch } from "react-redux";
 type Props = { postId: number };
 
 const Comments: FC<Props> = ({ postId }) => {
-  const [comments, setComments] = useState<IComment[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { comments, isLoading } = useTypedSelector((state) => state.comment);
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      postService
-        .getPostComments(postId)
-        .then((res) => setComments(res.data))
-        .catch((e) => console.log(e))
-        .finally(() => setIsLoading(false));
-    }, 500);
+    dispatch(fetchComments(postId));
   }, [postId]);
   const commentList = comments.map((comm) => {
     return <CommentItem key={comm.id} comment={comm} />;

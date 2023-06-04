@@ -1,12 +1,8 @@
-import { Dispatch } from "react";
-import { PostAction, PostActionTypes } from "./types";
+import { PostActionTypes } from "./types";
+import { IPostRequestParams } from "../../types/post.interface";
 
-export const fetchPosts =
-  (postId: number) => async (dispatch: Dispatch<PostAction>) => {
-    console.log("lol");
-    dispatch({
-      type: PostActionTypes.FETCH_POSTS_LOADING,
-    });
-  };
-
+export const fetchPosts = (params: IPostRequestParams) => ({
+  type: PostActionTypes.FETCH_POSTS_LOADING,
+  payload: params,
+});
 export const resetStore = () => ({ type: PostActionTypes.RESET_STORE });

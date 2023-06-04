@@ -3,6 +3,8 @@ import "./header.css";
 import { Image, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import avatar from "../../assets/avatar.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { MY_EMAIL, MY_NAME } from "../../consts";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -26,13 +28,22 @@ const Header: FC<Props> = (props) => {
             roundedCircle
             width={40}
             height={40}
-            className=""
+            className="me-3"
           />
-          <Offcanvas.Title></Offcanvas.Title>
+          <Offcanvas.Title as={"div"}>
+            <div>{MY_NAME}</div>
+            <div>{MY_EMAIL}</div>
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/about">
+              Обо мне
+            </Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Главная
+            </Nav.Link>
+          </Nav>
         </Offcanvas.Body>
       </Offcanvas>
       <Navbar.Toggle

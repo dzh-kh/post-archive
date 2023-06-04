@@ -4,7 +4,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Loader from "../loader/Loader";
-
+import { fetchPosts, resetStore } from "../../store/post/actions";
 type Props = { title: string; page: number; setPage: any };
 
 const Posts: FC<Props> = ({ title, page, setPage }) => {
@@ -32,13 +32,13 @@ const Posts: FC<Props> = ({ title, page, setPage }) => {
 
   useEffect(() => {
     return () => {
-      dispatch({ type: "RESET_STORE" });
+      dispatch(resetStore());
     };
   }, [title]);
 
   useEffect(() => {
     if (!isLoading) {
-      dispatch({ type: "FETCH_POSTS_LOADING", page, title });
+      dispatch(fetchPosts({ page, title }));
     }
   }, [page, title]);
 

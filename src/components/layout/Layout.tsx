@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import Header from "../header/Header";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "../../pages/Main";
+import UserInfo from "../../pages/userInfo/UserInfo";
 // type Props = {
 //   children: React.ReactNode;
 // };
@@ -11,12 +12,10 @@ const Layout: FC = () => {
     <div>
       <Header />
       {/* {children} */}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/user" element={<div>user</div>} />
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/user/:id" element={<UserInfo id={1} />} />
+        <Route path="/" element={<Main />} />
+      </Routes>
     </div>
   );
 };

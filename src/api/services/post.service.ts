@@ -1,19 +1,19 @@
 import $api from "../http";
 import { AxiosResponse } from "axios";
-import IPost from "../../types/post.interface";
+import { IPost } from "../../types/post.interface";
 import IComment from "../../types/comment.interface";
-
+import { IPostRequestParams } from "../../types/post.interface";
 const baseUrl = "posts";
 
 export const postService = {
   getPosts: async (
-    userId?: number,
-    page = 1,
-    title = ""
+    params: IPostRequestParams
   ): Promise<AxiosResponse<IPost>> => {
-    const id = userId ? `/?userId=${userId}` : "";
+    const id = params.userId ? `/?userId=${params.userId}` : "";
     const res = await $api.get<IPost>(
-      `${baseUrl}/${id}?_limit=10&_page=${page}&title_like=${title}`
+      `${baseUrl}/${id}?_limit=10&_page=${params.page || 1}&title_like=${
+        params.title || ""
+      }`
     );
     return res;
   },

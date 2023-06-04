@@ -10,13 +10,11 @@ const initialState: PostState = {
 const postReducer = (state = initialState, action: PostAction): PostState => {
   switch (action.type) {
     case PostActionTypes.RESET_STORE:
-      console.log("RESET");
       return { ...initialState };
     case PostActionTypes.FETCH_POSTS_LOADING:
       console.log("LOADING");
       return { ...state, isLoading: true };
     case PostActionTypes.FETCH_POSTS_SUCCESS:
-      console.log("success");
       return {
         ...state,
         isLoading: false,
@@ -25,6 +23,7 @@ const postReducer = (state = initialState, action: PostAction): PostState => {
       };
     case PostActionTypes.FETCH_POSTS_ERROR:
       return { ...state, isLoading: false, error: action.payload };
+
     default: {
       return state;
     }

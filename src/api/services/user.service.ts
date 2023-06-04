@@ -4,9 +4,10 @@ import IUser from "../../types/user.interface";
 
 const baseUrl = "users";
 
-export const postService = {
+export const userService = {
   getUserById: async (userId: number): Promise<AxiosResponse<IUser>> => {
     const res = await $api.get<IUser>(`${baseUrl}?id=${userId}`);
     return res;
   },
 };
+export default userService;
