@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./searchbar.css";
-import crossMark from "../../assets/error.png";
+import crossMark from "../../assets/images/error.png";
 
 type Props = { value: any; setValue: any; setPageQuery: any };
 

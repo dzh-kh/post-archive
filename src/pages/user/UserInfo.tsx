@@ -1,35 +1,17 @@
-import React, { FC, useEffect, useRef } from "react";
-import { fetchUser } from "../../store/user/action";
+import React, { FC } from "react";
 import { Row, Col, Image } from "react-bootstrap";
-import avatar from "../../assets/avatar.png";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import avatar from "../../assets/images/avatar.png";
 import "./user.css";
-import Loader from "../../components/loader/Loader";
+import IUser from "../../types/user.interface";
 
-type Props = { id: number };
+type Props = { user: IUser | null };
 
-const UserInfo: FC<Props> = ({ id }) => {
-  const isFirstRender = useRef(true);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (isFirstRender) {
-      console.log("again");
-      // dispatch(fetchUser(id));
-      isFirstRender.current = false;
-    }
-  }, [id]);
-  // console.log("redirect");
-  const { user } = useTypedSelector((state) => state.user);
-  console.log;
+const UserInfo: FC<Props> = ({ user }) => {
   return (
     <div>
       <Row className="justify-content-between">
-        <Col lg={12}>
-          {" "}
+        <Col lg={5} className="info-card__left">
           <h3>{user?.name}</h3>
-        </Col>
-        <Col lg={5}>
           <Image width={250} height={250} src={avatar} roundedCircle />
         </Col>
         <Col lg={7}>

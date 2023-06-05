@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import "./header.css";
 import { Image, Nav, Navbar, Offcanvas } from "react-bootstrap";
-import avatar from "../../assets/avatar.png";
+import avatar from "../../assets//images/avatar.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { MY_EMAIL, MY_NAME } from "../../consts";
 import { Link } from "react-router-dom";
@@ -23,13 +23,16 @@ const Header: FC<Props> = (props) => {
     >
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Image
-            src={avatar}
-            roundedCircle
-            width={40}
-            height={40}
-            className="me-3"
-          />
+          <Link to="/about" onClick={handleClose}>
+            <Image
+              src={avatar}
+              roundedCircle
+              width={40}
+              height={40}
+              className="me-3"
+            />
+          </Link>
+
           <Offcanvas.Title as={"div"}>
             <div>{MY_NAME}</div>
             <div>{MY_EMAIL}</div>
@@ -37,10 +40,10 @@ const Header: FC<Props> = (props) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/about">
+            <Nav.Link as={Link} to="/about" onClick={handleClose}>
               Обо мне
             </Nav.Link>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/" onClick={handleClose}>
               Главная
             </Nav.Link>
           </Nav>

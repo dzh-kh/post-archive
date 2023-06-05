@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Posts from "../components/posts/Posts";
-import Searchbar from "../components/searchbar/Searchbar";
+import Posts from "../../components/posts/Posts";
+import Searchbar from "../../components/searchbar/Searchbar";
 import { useDispatch } from "react-redux";
-import useThrottle from "../hooks/useThrottle";
+import useThrottle from "../../hooks/useThrottle";
 import "./main.css";
 type Props = {};
 

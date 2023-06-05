@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import IComment from "../../types/comment.interface";
 import { Row, Col, Image } from "react-bootstrap";
-import avatar from "../../assets/avatar.png";
+import avatar from "../../assets/images/avatar.png";
 type Props = {
   comment: IComment;
 };

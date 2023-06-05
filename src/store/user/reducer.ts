@@ -3,7 +3,7 @@ import { UserState, UserAction, UserActionTypes } from "./types";
 const initialState: UserState = {
   user: null,
   error: "",
-  isLoading: false,
+  isLoading: true,
 };
 
 const userReducer = (state = initialState, action: UserAction): UserState => {

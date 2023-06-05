@@ -7,23 +7,27 @@ import { useParams } from "react-router-dom";
 import { fetchUser } from "../../store/user/action";
 import Loader from "../../components/loader/Loader";
 import { Row } from "react-bootstrap";
+
 type Props = {};
 
 const User = (props: Props) => {
   const [pageQuery, setPageQuery] = useState(1);
+
   const { id } = useParams();
-  const { isLoading } = useTypedSelector((state) => state.user);
+  const { isLoading, user } = useTypedSelector((state) => state.user);
+  const dispatch = useDispatch();
   useEffect(() => {
-    console.log("ISLOADING: " + isLoading);
-  }, [isLoading]);
+    dispatch(fetchUser(Number(id)));
+  }, [id]);
+
   if (isLoading) return <Loader />;
 
   return (
     <Row className="gy-5">
-      <UserInfo id={id} />
+      <UserInfo user={user} />
       <Posts page={pageQuery} setPage={setPageQuery} userId={Number(id)} />
     </Row>
   );
 };
 
-export default User;
+export default React.memo(User);

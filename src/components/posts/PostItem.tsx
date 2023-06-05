@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-import avatar from "../../assets/avatar.png";
+import avatar from "../../assets/images/avatar.png";
 import { IPost } from "../../types/post.interface";
 type Props = {
   post: IPost;
