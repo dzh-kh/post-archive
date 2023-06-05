@@ -1,13 +1,14 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import PostItem from "./PostItem";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Loader from "../loader/Loader";
 import { fetchPosts, resetStore } from "../../store/post/actions";
-type Props = { title: string; page: number; setPage: any };
 
-const Posts: FC<Props> = ({ title, page, setPage }) => {
+type Props = { title?: string; page: number; setPage: any; userId?: number };
+
+const Posts: FC<Props> = ({ userId, title = "", page, setPage }) => {
   const { posts, isLoading, totalCount } = useTypedSelector(
     (state) => state.post
   );
@@ -32,13 +33,15 @@ const Posts: FC<Props> = ({ title, page, setPage }) => {
 
   useEffect(() => {
     return () => {
+      console.log(posts);
+      console.log("reset");
       dispatch(resetStore());
     };
   }, [title]);
-
+  console.log(posts);
   useEffect(() => {
     if (!isLoading) {
-      dispatch(fetchPosts({ page, title }));
+      dispatch(fetchPosts({ page, title, userId }));
     }
   }, [page, title]);
 
@@ -53,4 +56,4 @@ const Posts: FC<Props> = ({ title, page, setPage }) => {
   );
 };
 
-export default Posts;
+export default React.memo(Posts);

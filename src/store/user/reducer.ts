@@ -9,10 +9,8 @@ const initialState: UserState = {
 const userReducer = (state = initialState, action: UserAction): UserState => {
   switch (action.type) {
     case UserActionTypes.FETCH_USER_LOADING:
-      console.log("LOADING");
       return { ...state, isLoading: true };
     case UserActionTypes.FETCH_USER_SUCCESS:
-      console.log("success");
       return {
         ...state,
         ...action.payload,

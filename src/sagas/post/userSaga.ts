@@ -6,7 +6,6 @@ import { delay } from "redux-saga/effects";
 export function* fetchUser(action: any): Generator {
   try {
     const { data } = yield call(userService.getUserById, action.id);
-    yield console.log(data);
     yield delay(500);
     yield put({
       type: UserActionTypes.FETCH_USER_SUCCESS,

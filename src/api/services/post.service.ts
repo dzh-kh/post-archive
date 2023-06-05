@@ -9,9 +9,9 @@ export const postService = {
   getPosts: async (
     params: IPostRequestParams
   ): Promise<AxiosResponse<IPost>> => {
-    const id = params.userId ? `/?userId=${params.userId}` : "";
+    const id = params.userId ? `/?userId=${params.userId}` : "/?";
     const res = await $api.get<IPost>(
-      `${baseUrl}/${id}?_limit=10&_page=${params.page || 1}&title_like=${
+      `${baseUrl}/${id}&_limit=10&_page=${params.page || 1}&title_like=${
         params.title || ""
       }`
     );

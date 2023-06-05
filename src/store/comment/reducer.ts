@@ -16,10 +16,13 @@ const commentReducer = (
     case CommentActionTypes.FETCH_COMMENTS_LOADING:
       return { ...state, isLoading: true };
     case CommentActionTypes.FETCH_COMMENTS_SUCCESS:
+      const postId = action.payload.comments[0].postId;
       return {
         ...state,
         isLoading: false,
-        comments: action.payload.comments,
+        comments: {
+          byId: { ...state.comments.byId, [postId]: action.payload.comments },
+        },
       };
     case CommentActionTypes.FETCH_COMMENTS_ERROR:
       return { ...state, isLoading: false, error: action.payload };

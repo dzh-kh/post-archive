@@ -5,7 +5,7 @@ import Comments from "../comments/Comments";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import avatar from "../../assets/avatar.png";
-import IPost from "../../types/post.interface";
+import { IPost } from "../../types/post.interface";
 type Props = {
   post: IPost;
 };
@@ -13,6 +13,7 @@ type Props = {
 const PostItem: FC<Props> = ({ post }) => {
   const { userId, title, body, id } = post;
   const [isCommentsOpen, setIsCommentsOpen] = useState<boolean>(false);
+
   return (
     <div className="mb-2">
       <Card>

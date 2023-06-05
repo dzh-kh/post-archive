@@ -12,7 +12,6 @@ const postReducer = (state = initialState, action: PostAction): PostState => {
     case PostActionTypes.RESET_STORE:
       return { ...initialState };
     case PostActionTypes.FETCH_POSTS_LOADING:
-      console.log("LOADING");
       return { ...state, isLoading: true };
     case PostActionTypes.FETCH_POSTS_SUCCESS:
       return {

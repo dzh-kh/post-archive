@@ -3,7 +3,9 @@ import IComment from "../../types/comment.interface";
 export interface CommentState {
   isLoading: boolean;
   error: string;
-  comments: IComment[] | [];
+  comments: {
+    byId: { [key: string]: IComment[] };
+  };
 }
 
 export enum CommentActionTypes {

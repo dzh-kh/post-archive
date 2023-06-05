@@ -13,7 +13,7 @@ const Main = (props: Props) => {
   const throttledTitle = useThrottle(titleQuery, 500);
 
   return (
-    <div className="container main-wrapper">
+    <div className="main-wrapper">
       <Searchbar
         value={titleQuery}
         setValue={setTitleQuery}

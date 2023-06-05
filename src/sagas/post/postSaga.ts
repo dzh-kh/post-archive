@@ -5,7 +5,6 @@ import { delay } from "redux-saga/effects";
 
 export function* fetchPost(action: any): Generator {
   try {
-    console.log(action);
     const { data, headers } = yield call(postService.getPosts, action.payload);
     yield delay(500);
     yield put({

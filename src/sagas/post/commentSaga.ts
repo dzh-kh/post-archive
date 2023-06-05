@@ -5,7 +5,6 @@ import { delay } from "redux-saga/effects";
 
 export function* fecthComments(action: any): Generator {
   try {
-    console.log(action);
     const { id } = action.payload;
     const { data } = yield call(postService.getPostComments, id);
     yield delay(500);
