@@ -1,21 +1,22 @@
 import {
-  applyMiddleware,
-  combineReducers,
-  legacy_createStore as createStore,
-} from "redux";
-import postReducer from "./post/reducer";
-import userReducer from "./user/reducer";
-import commentReducer from "./comment/reducer";
-import rootSaga from "../sagas/rootSaga";
+    applyMiddleware,
+    combineReducers,
+    legacy_createStore as createStore,
+} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-import createSagaMiddleware from "redux-saga";
+import rootSaga from '../sagas/rootSaga';
+
+import commentReducer from './comment/reducer';
+import postReducer from './post/reducer';
+import userReducer from './user/reducer';
 
 const sagaMiddlware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-  post: postReducer,
-  user: userReducer,
-  comment: commentReducer,
+    post: postReducer,
+    user: userReducer,
+    comment: commentReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddlware));

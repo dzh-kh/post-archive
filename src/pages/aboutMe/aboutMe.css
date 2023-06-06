@@ -1,61 +1,61 @@
 .contact_item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 8px;
-  gap: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 2px;
 
-  left: 181px;
-  top: 17px;
-  width: fit-content;
+    left: 181px;
+    top: 17px;
+    width: fit-content;
 
-  border-radius: 15px;
+    border-radius: 15px;
 }
 
 .telegram {
-  background: #f1f8ff;
-  border: 0.5px solid #0a66c2;
-  color: #0a66c2;
+    background: #f1f8ff;
+    border: 0.5px solid #0a66c2;
+    color: #0a66c2;
 }
 
 .github {
-  background: #f2f2f2;
-  border: 0.5px solid #222222;
+    background: #f2f2f2;
+    border: 0.5px solid #222222;
 }
 
 .gmail {
-  background: #fff4f1;
-  border: 0.5px solid #f24e1e;
-  color: #f24e1e;
+    background: #fff4f1;
+    border: 0.5px solid #f24e1e;
+    color: #f24e1e;
 }
 
 .contacts {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .about__wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .slill-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  background: #f1f5f9;
-  border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    background: #f1f5f9;
+    border-radius: 3px;
 }
 
 .skill {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1em;
 }

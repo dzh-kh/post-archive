@@ -1,10 +1,10 @@
 .searchbar_wrapper {
-  position: relative;
+    position: relative;
 }
 
 .cross-mark {
-  position: absolute;
-  right: 9px;
-  top: 13px;
-  cursor: pointer;
+    position: absolute;
+    right: 9px;
+    top: 13px;
+    cursor: pointer;
 }

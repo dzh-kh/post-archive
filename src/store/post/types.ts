@@ -1,41 +1,42 @@
-import { IPost } from "../../types/post.interface";
+import { IPost, IPostRequestParams } from '@types1/post.interface';
 
 export interface PostState {
-  isLoading: boolean;
-  error: string;
-  posts: IPost[] | [];
-  totalCount: number;
+    isLoading: boolean;
+    error: string;
+    posts: IPost[] | [];
+    totalCount: number;
 }
 
 export enum PostActionTypes {
-  FETCH_POSTS_LOADING = "FETCH_POSTS_LOADING",
-  FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS",
-  FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR",
-  RESET_STORE = "RESET_STORE",
+    FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST',
+    FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS',
+    FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR',
+    RESET_STORE = 'RESET_STORE',
 }
 
-interface fetchPostSuccess {
-  type: PostActionTypes.FETCH_POSTS_SUCCESS;
-  payload: {
-    posts: IPost[];
-    totalCount: number;
-  };
+interface fetchPostSuccessAction {
+    type: PostActionTypes.FETCH_POSTS_SUCCESS;
+    payload: {
+        posts: IPost[];
+        totalCount: number;
+    };
 }
 
-interface fetchPostLoading {
-  type: PostActionTypes.FETCH_POSTS_LOADING;
+export interface fetchPostRequestAction {
+    type: PostActionTypes.FETCH_POSTS_REQUEST;
+    payload: IPostRequestParams;
 }
-interface fetchPostError {
-  type: PostActionTypes.FETCH_POSTS_ERROR;
-  payload: string;
+interface fetchPostErrorAction {
+    type: PostActionTypes.FETCH_POSTS_ERROR;
+    payload: string;
 }
 
-interface resetStore {
-  type: PostActionTypes.RESET_STORE;
+interface resetStoreAction {
+    type: PostActionTypes.RESET_STORE;
 }
 
 export type PostAction =
-  | fetchPostError
-  | fetchPostLoading
-  | fetchPostSuccess
-  | resetStore;
+    | fetchPostErrorAction
+    | fetchPostRequestAction
+    | fetchPostSuccessAction
+    | resetStoreAction;

@@ -1,41 +1,34 @@
-import IComment from "../../types/comment.interface";
+import IComment from '@types1/comment.interface';
 
 export interface CommentState {
-  isLoading: boolean;
-  error: string;
-  comments: {
-    byId: { [key: string]: IComment[] };
-  };
+    loadingPostId: null | number;
+    error: string;
+    comments: {
+        byId: { [key: string]: IComment[] };
+    };
 }
 
 export enum CommentActionTypes {
-  FETCH_COMMENTS_LOADING = "FETCH_COMMENTS_LOADING",
-  FETCH_COMMENTS_SUCCESS = "FETCH_COMMENTS_SUCCESS",
-  FETCH_COMMENTS_ERROR = "FETCH_COMMENTS_ERROR",
-  RESET_COMMENTS_STORE = "RESET_COMMENTS_STORE",
+    FETCH_COMMENTS_REQUEST = 'FETCH_COMMENTS_REQUEST',
+    FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS',
+    FETCH_COMMENTS_ERROR = 'FETCH_COMMENTS_ERROR',
 }
 
-interface fetchCommentSuccess {
-  type: CommentActionTypes.FETCH_COMMENTS_SUCCESS;
-  payload: {
-    comments: IComment[];
-  };
+interface fetchCommentSuccessAction {
+    type: CommentActionTypes.FETCH_COMMENTS_SUCCESS;
+    payload: IComment[];
 }
 
-interface fetchCommentLoading {
-  type: CommentActionTypes.FETCH_COMMENTS_LOADING;
+export interface fetchCommentRequestAction {
+    type: CommentActionTypes.FETCH_COMMENTS_REQUEST;
+    payload: number;
 }
-interface fetchCommentError {
-  type: CommentActionTypes.FETCH_COMMENTS_ERROR;
-  payload: string;
-}
-
-interface resetCommentStore {
-  type: CommentActionTypes.RESET_COMMENTS_STORE;
+interface fetchCommentErrorAction {
+    type: CommentActionTypes.FETCH_COMMENTS_ERROR;
+    payload: string;
 }
 
 export type CommentAction =
-  | fetchCommentError
-  | fetchCommentLoading
-  | fetchCommentSuccess
-  | resetCommentStore;
+    | fetchCommentErrorAction
+    | fetchCommentRequestAction
+    | fetchCommentSuccessAction;

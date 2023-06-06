@@ -1,36 +1,37 @@
-import { CommentState, CommentAction, CommentActionTypes } from "./types";
+import { CommentAction, CommentActionTypes, CommentState } from './types';
 
 const initialState: CommentState = {
-  comments: { byId: {} },
-  error: "",
-  isLoading: false,
+    comments: { byId: {} },
+    error: '',
+    loadingPostId: null,
 };
 
 const commentReducer = (
-  state = initialState,
-  action: CommentAction
+    state = initialState,
+    action: CommentAction,
 ): CommentState => {
-  switch (action.type) {
-    case CommentActionTypes.RESET_COMMENTS_STORE:
-      return { ...initialState };
-    case CommentActionTypes.FETCH_COMMENTS_LOADING:
-      return { ...state, isLoading: true };
-    case CommentActionTypes.FETCH_COMMENTS_SUCCESS:
-      const postId = action.payload.comments[0].postId;
-      return {
-        ...state,
-        isLoading: false,
-        comments: {
-          byId: { ...state.comments.byId, [postId]: action.payload.comments },
-        },
-      };
-    case CommentActionTypes.FETCH_COMMENTS_ERROR:
-      return { ...state, isLoading: false, error: action.payload };
+    switch (action.type) {
+        case CommentActionTypes.FETCH_COMMENTS_REQUEST:
+            return { ...state, loadingPostId: action.payload };
+        case CommentActionTypes.FETCH_COMMENTS_SUCCESS:
+            const postId = action.payload[0].postId;
+            return {
+                ...state,
+                loadingPostId: null,
+                comments: {
+                    byId: {
+                        ...state.comments.byId,
+                        [postId]: action.payload,
+                    },
+                },
+            };
+        case CommentActionTypes.FETCH_COMMENTS_ERROR:
+            return { ...state, loadingPostId: null, error: action.payload };
 
-    default: {
-      return state;
+        default: {
+            return state;
+        }
     }
-  }
 };
 
 export default commentReducer;

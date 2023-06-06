@@ -1,0 +1,23 @@
+{
+    "printWidth": 80,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "semi": true,
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "^@/components/(.*)$",
+        "^@/pages/(.*)$",
+        "^@/services/(.*)$",
+        "^@/consts/(.*)$",
+        "^@/assets/(.*)$",
+        "^@/hooks/(.*)$",
+        "^@/components/(.*)$",
+        "^@/types1/(.*)$",
+        "^../(.*)",
+        "^./(.*)",
+        "(.css)$"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}
