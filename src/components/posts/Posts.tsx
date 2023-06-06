@@ -43,13 +43,18 @@ const Posts: FC<Props> = ({ userId, title = '', page, setPage }) => {
 
         return () => {
             clearTimeout(delayDebounceFn);
-            dispatch(resetStore());
         };
     }, [title]);
 
     useEffect(() => {
         if (!isLoading) dispatch(fetchPosts({ page, title, userId }));
     }, [page]);
+    
+     useEffect(() => {
+        return () => {
+            dispatch(resetStore());
+        };
+    }, []);
 
     const postList = posts.map((post) => {
         return <PostItem key={post.id} post={post} />;
