@@ -19,5 +19,6 @@ a {
 }
 
 .container {
-    margin: 5em 2em;
+    margin-top: 5em;
+    margin-bottom: 2em;
 }

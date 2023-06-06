@@ -30,19 +30,26 @@ const Posts: FC<Props> = ({ userId, title = '', page, setPage }) => {
             }
         };
         document.addEventListener('scroll', scrollHandler);
-        return () => document.removeEventListener('scroll', scrollHandler);
+        return () => {
+            document.removeEventListener('scroll', scrollHandler);
+        };
     }, [isLoading]);
 
     useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+            dispatch(resetStore());
+            dispatch(fetchPosts({ page, title, userId }));
+        }, 500);
+
         return () => {
+            clearTimeout(delayDebounceFn);
             dispatch(resetStore());
         };
     }, [title]);
+
     useEffect(() => {
-        if (!isLoading) {
-            dispatch(fetchPosts({ page, title, userId }));
-        }
-    }, [page, title]);
+        if (!isLoading) dispatch(fetchPosts({ page, title, userId }));
+    }, [page]);
 
     const postList = posts.map((post) => {
         return <PostItem key={post.id} post={post} />;

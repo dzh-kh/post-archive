@@ -1,6 +1,6 @@
 import { errorIcon } from '@assets';
 import React, { FC, useState } from 'react';
-import { Col, Row, Toast, ToastContainer } from 'react-bootstrap';
+import { Toast, ToastContainer } from 'react-bootstrap';
 
 type Props = { error: string };
 

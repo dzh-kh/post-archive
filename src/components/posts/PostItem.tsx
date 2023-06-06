@@ -22,7 +22,7 @@ const PostItem: FC<Props> = ({ post }) => {
                 <Card.Header>
                     <Row className="align-items-center">
                         <Col lg={1}>
-                            <Link to={`${USER_PAGE_PATH}}/${userId}`}>
+                            <Link to={`${USER_PAGE_PATH}/${userId}`}>
                                 <Image
                                     src={avatar}
                                     roundedCircle
